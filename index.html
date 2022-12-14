@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Joel King - Portfolio</title>
+    <link type="text/css" rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="main-page">
+        <div id="header">
+            <span id="left-side-title"><h2>Portfolio of Joel King</h2></span>
+            <span id="right-side-subtitle">Troubleshooter, Problem-solver</span>
+        </div>
+        <div>
+            <hr>
+        </div>
+        <div class="main-content">
+            <div class="under"><p>I'd say my favorite class in college was the Intro to Artificial Intelligence course, where I both implemented a bi-directional A* pathfinding algorithm (which beat all of the professor's best AI pathfinding agents, but only because he hadn't had the time to build anything more complex than simple A*), but also built a risk-taking knowledge-based agent that apparently managed to score <em>slightly</em> higher than the professor's best agents in a challenge resembling a game of Hunt The Wumpus (I'm not sure how. Apparently I was taking more risks than his agents? I just followed the math in the textbook.)</p></div>
+            <div id="left-main-content" class="important">
+                <div id="project-list">
+                    <a href="./pages/aStarPathfinding.html">Technical Explanation of A* Pathfinding</a>
+                    <a href="./pages/votingResearch.html">Algorithmic Voting Strategy Search Research</a>
+                    <a href="./pages/donaldson-asu-twitter.html">Twitter Scraping and Data Analysis Tool (using Python and MySQL)</a>
+                    <a href="./pages/nuclearPower.html">Presentation on Nuclear Power</a>
+                    <a href="./pages/compilerTest.html">Compiler Testing Script</a>
+                </div>
+            </div>
+            <div id="right-main-content">
+                <div id="about-me">
+                    <img src="./images/JoelFace.jpg" id="mypic">
+                    <p>My name is Joel King. I've just graduated from Angelo State University as a non-traditional student at the age of 40. I started troubleshooting computer issues when I was pulled out of my 2nd grade class (in Soëgel, Germany, an American school for military dependent children) to fix an Apple IIe that was showing nothing on the screen. (The contrast controls are hidden behind an "OpenApple+Reset" reboot key combination. They were set to zero.)</p>
+                    <p>I've been fascinated with solving issues with computers and computer languages ever since. I was dabbling with QBASIC, then C++ before I hit high school. Over the course of my life I've built several PCs from parts I purchased, and dabbled in the following languages:</p>
+                    <ul>
+                        <li>Pascal</li>
+                        <li>QBASIC</li>
+                        <li>C++</li>
+                        <li>Scheme</li>
+                        <li>Java</li>
+                        <li>TI-Basic</li>
+                        <li>Python</li>
+                        <li>HTML/CSS</li>
+                        <li>Javascript</li>
+                        <li>PHP</li>
+                        <li>And more...</li>
+                    </ul>
+                    
+                    <span id="resume"><a href="./docs/JoelKingResume.pdf">Here's my resume.</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="fancy-background">if(theRouteData.mFromNBA.at(cheapestNodeOnFrontier))
+		{//Line 3 of PNBA*?
+			if(((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA)
+				&& //Line 4 of PNBA*?
+				((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + otherRouteData.bestFfromNBA - otherRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+				{
+					for(drivingDirection theMove = driveW; theMove <= driveE; theMove = static_cast<drivingDirection>(theMove + 1))
+					{//Line 5 of PNBA*?
+						tempRoute = theRouteData.optimalRouteToNode.at(cheapestNodeOnFrontier);
+						nextHex = map.getNeighborHex(cheapestNodeOnFrontier, theMove); //y from PNBA*
+						if(theRouteData.mFromNBA.at(nextHex) && ((theRouteData.distance.at(nextHex) - 1 + theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.roughness.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+						{//Half of Line 6 from PNBA*?
+							nextMoveCost = getMoveCost(map,theRouteData.roughness,cheapestNodeOnFrontier,theMove);
+							if(theRouteData.calculatedRouteCost.at(nextHex) > theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost)
+							{//Other half of Line 6 in PNBA*?
+								theRouteData.calculatedRouteCost.at(nextHex) = theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost;//Line 7 of PNBA*
+								tempRoute.emplace_back(theMove);
+								theRouteData.optimalRouteToNode.at(nextHex) = tempRoute;
+								//Line 8 is based on Line 7 plus stored distance.
+								if(find(theRouteData.onFrontier.begin(),theRouteData.onFrontier.end(),nextHex) == theRouteData.onFrontier.end())
+								{
+									theRouteData.onFrontier.emplace_back(nextHex);//Lines 9, 10, 11? I don't understand why 9 and 10 exist.
+								}
+								if(theRouteData.calculatedRouteCost.at(nextHex) != INT_MAX && otherRouteData.calculatedRouteCost.at(nextHex) != INT_MAX)
+								{//Lines 12-16 of PNBA*
+									if((theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex)) < bestLfromNBA)
+									{
+										bestLfromNBA = theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex);
+									}
+								}
+							}
+						}
+					}
+				}
+			theRouteData.mFromNBA.at(cheapestNodeOnFrontier) = false;//Remove the node from M from PNBA*. Line 17?
+		}</div>
+  </body>
+</html>
