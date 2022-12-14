@@ -185,3 +185,7 @@ a:visited:hover {
     flex-grow: 2;
     font-size: x-large;
 }
+
+#path-example-image {
+    max-width: fit-content;
+}
