@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Joel King - Portfolio - Voting Research</title>
+    <link type="text/css" rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div id="main-page">
+        <div id="header">
+            <h1>C++ - Algorithmic Voting Research</h1>
+        </div>
+        <div class="main-content">
+            <div id="left-main-content">
+                <p>
+                    I got curious what research might be like, so I approached <a href="https://www.cs.angelo.edu/~rlegrand/">Dr. Rob LeGrand</a> in the ASU Computer Science department to see if there were any research topics he would like to explore.
+                </p>
+                <p>
+                    Dr. LeGrand mentioned that his <a href="https://www.cs.angelo.edu/~rlegrand/research/dissertation.pdf">dissertation</a> was on mathematically finding a optimal voting strategy for Approval-style voting systems within a voting framework thought of by <a href="https://lorrie.cranor.org/">Dr. Lorrie Cranor</a> called <a href="https://lorrie.cranor.org/dsv.html">Declared Strategy Voting</a>.
+                </p>
+                <p>
+                    To briefly try to describe DSV, instead of voting directly on a ballot, you instead inform a computer what your honest preferences are, as well as what kind
+                    of strategy you would like it to use to maximize a particular kind of outcome. 
+                </p>
+                <p>Dr. LeGrand showed that in a system such as this, for a particular definition of happiness, the best strategy was a specific kind of strategy that was still 'sincere'; in other words, at no point did you choose to vote for someone you preferred less than someone you hadn't voted for.</p>
+                <p>I asked if the same technique could be applied to Instant Runoff Voting (what many Americans call Ranked Choice Voting), and he said no.</p>
+                <p>And then he spent the next two weeks furiously coming up with a less math-formula, more algorithmic way of achieving the same result that he achieved for Approval voting, but that could be applied to a broader range of voting systems, such as IRV/RCV, Borda, etc.</p>
+                <p>Unfortunately, this project took place over a very short summer semester, and one in which I also had a major writing class. I didn't have as much time to work on this code as I would have preferred.</p>
+                <p>However... <em>it worked!</em> The algorithmic method (once I got the code actually working) resulted in the same outcomes as what had been proven previously via mathematical formulas, and not only could be applied to RCV/IRV, Borda, and others, but started giving hints that the best strategy (for this particular definition of 'best') for an RCV/IRV voting system was an <em>insincere</em> one.</p>
+                <p><span class="document-link"><a href="https://github.com/JEnduriumK/VotingResearch">The (Rough) Code</a></span></p>
+                <p><span class="document-link"><a href="../docs/ResearchPaper.pdf">The Paper</a></span></p>
+                <p><a href="../images/Voting Research Poster.svg"><img src="../images/Voting Research Poster.svg" class="document"></a></p>
+            </div>
+            <div id="right-main-content">
+                <p>Notes:
+                    <ul>
+                        <li>This project was more about finding a new analysis method that can be computationally applied to more voting systems, not showing one voting system was better than another.</li>
+                        <li>No ideologies were studied. Voters had a randomized opinion about faceless, opinionless candidates.</li>
+                        <li>We ran out of time.</li>
+                        <li>My code likely has inefficiencies. I can already think of two things off the top of my head that I'd change: 
+                            <ol>
+                                <li>Preventing the computation of debug/result output in cases where that output would never be printed</li>
+                                <li>Ripping out all use of <span class="code">stringstream</span> and perhaps replacing it with overloading the <span class="code">&lt;&lt;</span> operator.</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="fancy-background">if(theRouteData.mFromNBA.at(cheapestNodeOnFrontier))
+		{//Line 3 of PNBA*?
+			if(((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA)
+				&& //Line 4 of PNBA*?
+				((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + otherRouteData.bestFfromNBA - otherRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+				{
+					for(drivingDirection theMove = driveW; theMove <= driveE; theMove = static_cast<drivingDirection>(theMove + 1))
+					{//Line 5 of PNBA*?
+						tempRoute = theRouteData.optimalRouteToNode.at(cheapestNodeOnFrontier);
+						nextHex = map.getNeighborHex(cheapestNodeOnFrontier, theMove); //y from PNBA*
+						if(theRouteData.mFromNBA.at(nextHex) && ((theRouteData.distance.at(nextHex) - 1 + theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.roughness.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+						{//Half of Line 6 from PNBA*?
+							nextMoveCost = getMoveCost(map,theRouteData.roughness,cheapestNodeOnFrontier,theMove);
+							if(theRouteData.calculatedRouteCost.at(nextHex) > theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost)
+							{//Other half of Line 6 in PNBA*?
+								theRouteData.calculatedRouteCost.at(nextHex) = theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost;//Line 7 of PNBA*
+								tempRoute.emplace_back(theMove);
+								theRouteData.optimalRouteToNode.at(nextHex) = tempRoute;
+								//Line 8 is based on Line 7 plus stored distance.
+								if(find(theRouteData.onFrontier.begin(),theRouteData.onFrontier.end(),nextHex) == theRouteData.onFrontier.end())
+								{
+									theRouteData.onFrontier.emplace_back(nextHex);//Lines 9, 10, 11? I don't understand why 9 and 10 exist.
+								}
+								if(theRouteData.calculatedRouteCost.at(nextHex) != INT_MAX && otherRouteData.calculatedRouteCost.at(nextHex) != INT_MAX)
+								{//Lines 12-16 of PNBA*
+									if((theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex)) < bestLfromNBA)
+									{
+										bestLfromNBA = theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex);
+									}
+								}
+							}
+						}
+					}
+				}
+			theRouteData.mFromNBA.at(cheapestNodeOnFrontier) = false;//Remove the node from M from PNBA*. Line 17?
+		}</div>
+  </body>
+</html>

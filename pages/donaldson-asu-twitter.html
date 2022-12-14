@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Joel King - Portfolio - Twitter Scraping / Python / MySQL / Data Analysis</title>
+    <link type="text/css" rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div id="main-page">
+        <div id="header">
+            <h1>Python/MySQL - Twitter Scraper and VADER Analysis tool with a SQL database</h1>
+        </div>
+        <div class="main-content">
+            <div id="left-main-content">
+                <p>Donaldson Company, a filter manufacturer (gasoline, air, chemical, etc), approached ASU to see if students 
+                    could gather social media data to attempt to predict the future.
+                </p>
+                <p>They saw that fossil-fuel burning internal combustion engines were likely being phased out, and 
+                    wanted to see if the social media posts by major engine manufacturers could be used to try to 
+                    predict the future technologies they were pursuing.
+                </p>
+                <p>They were looking for a few groups of students to scrape data from one of at least three 
+                    platforms: YouTube, Facebook, and Twitter. Our group chose Twitter.
+                </p>
+                <p>Donaldson Company was looking for us to find two things: 
+                    <ul>
+                        <li>Mentions of specific alternative 
+                            power-trains, such as natural gas, hydrogen combustion, hydrogen fuel cell, or electric battery.
+                        </li>
+                        <li>What they called the "sentiment analysis" of the Tweet: a scoring of the 'tone' of the Tweet
+                            broken down into positive, neutral, negative, and "compound" scores. But all they provided was that 
+                            description, and a general suggestion that a tool already existed to do this task.
+                        </li>
+                    </ul>
+                </p>
+                <p>It turns out that "sentiment analysis" is a much broader concept, and can be applied to something like classifying a sentence as objective or subjective, or almost any other form of categorization, not just positive or negative tone. However, one tool called <a href="https://github.com/cjhutto/vaderSentiment">VADER</a> (Valence Aware Dictionary and sEntiment Reasoner) was created by Drs. Hutto, C.J. & Gilbert, E.E. in 2014, specifically for social media content.  
+                </p>
+                <p><span class="document-link"><a href="https://github.com/JEnduriumK/DonaldsonTwitterDatabaseDemo/tree/main">A Twitter Scraping Tool for Donaldson Company, by three ASU students.</a></span></p>
+            </div>
+            <div id="right-main-content">
+                <p>What I integrated or developed:
+                    <ul>
+                        <li>Twitter access via Tweepy</li>
+                        <li>A MySQL database (via a student account on Azure cloud services)</li>
+                        <li>Singleton-based MySQL connection management</li>
+                        <li>Optimizations at the Python level to speed up database updates and insertions</li>
+                        <li>Integration of tone-based analysis of Tweet contents via VADER analysis, by Hutto, C.J. & Gilbert, E.E.</li>
+                    </ul>
+                </p>
+                <p>The project resulted in attaining and processing over 90,000 Tweets from 118 companies.</p>
+                
+            </div>
+        </div>
+    </div>
+    <div id="fancy-background">if(theRouteData.mFromNBA.at(cheapestNodeOnFrontier))
+		{//Line 3 of PNBA*?
+			if(((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA)
+				&& //Line 4 of PNBA*?
+				((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + otherRouteData.bestFfromNBA - otherRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+				{
+					for(drivingDirection theMove = driveW; theMove <= driveE; theMove = static_cast<drivingDirection>(theMove + 1))
+					{//Line 5 of PNBA*?
+						tempRoute = theRouteData.optimalRouteToNode.at(cheapestNodeOnFrontier);
+						nextHex = map.getNeighborHex(cheapestNodeOnFrontier, theMove); //y from PNBA*
+						if(theRouteData.mFromNBA.at(nextHex) && ((theRouteData.distance.at(nextHex) - 1 + theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.roughness.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+						{//Half of Line 6 from PNBA*?
+							nextMoveCost = getMoveCost(map,theRouteData.roughness,cheapestNodeOnFrontier,theMove);
+							if(theRouteData.calculatedRouteCost.at(nextHex) > theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost)
+							{//Other half of Line 6 in PNBA*?
+								theRouteData.calculatedRouteCost.at(nextHex) = theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost;//Line 7 of PNBA*
+								tempRoute.emplace_back(theMove);
+								theRouteData.optimalRouteToNode.at(nextHex) = tempRoute;
+								//Line 8 is based on Line 7 plus stored distance.
+								if(find(theRouteData.onFrontier.begin(),theRouteData.onFrontier.end(),nextHex) == theRouteData.onFrontier.end())
+								{
+									theRouteData.onFrontier.emplace_back(nextHex);//Lines 9, 10, 11? I don't understand why 9 and 10 exist.
+								}
+								if(theRouteData.calculatedRouteCost.at(nextHex) != INT_MAX && otherRouteData.calculatedRouteCost.at(nextHex) != INT_MAX)
+								{//Lines 12-16 of PNBA*
+									if((theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex)) < bestLfromNBA)
+									{
+										bestLfromNBA = theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex);
+									}
+								}
+							}
+						}
+					}
+				}
+			theRouteData.mFromNBA.at(cheapestNodeOnFrontier) = false;//Remove the node from M from PNBA*. Line 17?
+		}</div>
+  </body>
+</html>

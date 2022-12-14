@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Joel King - Portfolio - Technical Writing - A* Pathfinding</title>
+    <link type="text/css" rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div id="main-page">
+        <div id="header">
+            <h1>Technical Writing - A* Pathfinding For Beginners</h1>
+        </div>
+        <div class="main-content">
+            <div id="left-main-content">
+                <p>
+                    I took a Technical Writing class, and needed to demonstrate that I could do Technical Writing.
+                </p>
+                <p>
+                    I was fairly familiar with A* Pathfinding from an Intro to Artificial Intelligence course I took, so I wrote a technical description of how basic A* Pathfinding's algoritm works to find a path between two points across an unknown landscape.
+                </p>
+                <p>
+                    Side note: If we interview, ask me about <em>bidirectional</em> A* Pathfinding. I actually went as far as implementing that algorithm in the Intro to AI course, and it was a blast! I just don't want to put the code up publicly online, as it would essentially be me posting the answers to assignments for that class.
+                </p>
+                <p><span class="document-link"><a href="../docs/AStarPathfinding.pdf">A Technical Description of A* Pathfinding (for beginners) (PDF)</a></span></p>
+            </div>
+            <div id="right-main-content">
+                <img src="../images/Figure 8.png" class="image-needs-background">
+            </div>
+        </div>
+    </div>
+    <div id="fancy-background">if(theRouteData.mFromNBA.at(cheapestNodeOnFrontier))
+		{//Line 3 of PNBA*?
+			if(((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA)
+				&& //Line 4 of PNBA*?
+				((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + otherRouteData.bestFfromNBA - otherRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+				{
+					for(drivingDirection theMove = driveW; theMove <= driveE; theMove = static_cast<drivingDirection>(theMove + 1))
+					{//Line 5 of PNBA*?
+						tempRoute = theRouteData.optimalRouteToNode.at(cheapestNodeOnFrontier);
+						nextHex = map.getNeighborHex(cheapestNodeOnFrontier, theMove); //y from PNBA*
+						if(theRouteData.mFromNBA.at(nextHex) && ((theRouteData.distance.at(nextHex) - 1 + theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.roughness.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+						{//Half of Line 6 from PNBA*?
+							nextMoveCost = getMoveCost(map,theRouteData.roughness,cheapestNodeOnFrontier,theMove);
+							if(theRouteData.calculatedRouteCost.at(nextHex) > theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost)
+							{//Other half of Line 6 in PNBA*?
+								theRouteData.calculatedRouteCost.at(nextHex) = theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost;//Line 7 of PNBA*
+								tempRoute.emplace_back(theMove);
+								theRouteData.optimalRouteToNode.at(nextHex) = tempRoute;
+								//Line 8 is based on Line 7 plus stored distance.
+								if(find(theRouteData.onFrontier.begin(),theRouteData.onFrontier.end(),nextHex) == theRouteData.onFrontier.end())
+								{
+									theRouteData.onFrontier.emplace_back(nextHex);//Lines 9, 10, 11? I don't understand why 9 and 10 exist.
+								}
+								if(theRouteData.calculatedRouteCost.at(nextHex) != INT_MAX && otherRouteData.calculatedRouteCost.at(nextHex) != INT_MAX)
+								{//Lines 12-16 of PNBA*
+									if((theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex)) < bestLfromNBA)
+									{
+										bestLfromNBA = theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex);
+									}
+								}
+							}
+						}
+					}
+				}
+			theRouteData.mFromNBA.at(cheapestNodeOnFrontier) = false;//Remove the node from M from PNBA*. Line 17?
+		}</div>
+  </body>
+</html>

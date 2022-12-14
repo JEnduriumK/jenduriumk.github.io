@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Joel King - Portfolio - Public Speaking - Informative Speech</title>
+    <link type="text/css" rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div id="main-page">
+        <div id="header">
+            <h1>Public Speaking - Information on Nuclear Power</h1>
+        </div>
+        <div class="main-content wrap-under">
+            <div id="left-main-content">
+                <p>
+                   In my very first semester at college, I took a public speaking course, and needed to present information on a topic of my choosing.
+                </p>
+                <p>I chose nuclear power.</p>
+                <p><span class="document-link"><a href="../docs/NuclearPowerProsandCons.pdf">Presentation Slides</a></span></p>
+                <p><span class="document-link"><a href="../docs/InformativeSpeechOutline-NuclearPower.pdf">Speech (Outline)</a></span></p>
+            </div>
+            <div id="right-main-content">
+                Memories:
+                <ol>
+                    <li>The project required five sources. I grabbed ten.</li>
+                    <li>I then panicked slightly when the professor told us we had to do a persuasive speech, could pick the same topic, but couldn't reuse sources.</li>
+                    <li>The professor made an exception for me...</li>
+                    <li>...and I still opted to switch topics to climate change in general, and ended up with <em>eighteen</em> sources. None of them reused, and still well over the requirements. I like digging into data!</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div id="fancy-background">if(theRouteData.mFromNBA.at(cheapestNodeOnFrontier))
+      {//Line 3 of PNBA*?
+        if(((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA)
+          && //Line 4 of PNBA*?
+          ((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + otherRouteData.bestFfromNBA - otherRouteData.distance.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+          {
+            for(drivingDirection theMove = driveW; theMove <= driveE; theMove = static_cast<drivingDirection>(theMove + 1))
+            {//Line 5 of PNBA*?
+              tempRoute = theRouteData.optimalRouteToNode.at(cheapestNodeOnFrontier);
+              nextHex = map.getNeighborHex(cheapestNodeOnFrontier, theMove); //y from PNBA*
+              if(theRouteData.mFromNBA.at(nextHex) && ((theRouteData.distance.at(nextHex) - 1 + theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.roughness.at(cheapestNodeOnFrontier)) < bestLfromNBA))
+              {//Half of Line 6 from PNBA*?
+                nextMoveCost = getMoveCost(map,theRouteData.roughness,cheapestNodeOnFrontier,theMove);
+                if(theRouteData.calculatedRouteCost.at(nextHex) > theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost)
+                {//Other half of Line 6 in PNBA*?
+                  theRouteData.calculatedRouteCost.at(nextHex) = theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost;//Line 7 of PNBA*
+                  tempRoute.emplace_back(theMove);
+                  theRouteData.optimalRouteToNode.at(nextHex) = tempRoute;
+                  //Line 8 is based on Line 7 plus stored distance.
+                  if(find(theRouteData.onFrontier.begin(),theRouteData.onFrontier.end(),nextHex) == theRouteData.onFrontier.end())
+                  {
+                    theRouteData.onFrontier.emplace_back(nextHex);//Lines 9, 10, 11? I don't understand why 9 and 10 exist.
+                  }
+                  if(theRouteData.calculatedRouteCost.at(nextHex) != INT_MAX && otherRouteData.calculatedRouteCost.at(nextHex) != INT_MAX)
+                  {//Lines 12-16 of PNBA*
+                    if((theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex)) < bestLfromNBA)
+                    {
+                      bestLfromNBA = theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        theRouteData.mFromNBA.at(cheapestNodeOnFrontier) = false;//Remove the node from M from PNBA*. Line 17?
+      }</div>
+  </body>
+</html>
