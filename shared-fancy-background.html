@@ -1,0 +1,36 @@
+if(theRouteData.mFromNBA.at(cheapestNodeOnFrontier))
+		{//Line 3 of PNBA*?
+			if(((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.distance.at(cheapestNodeOnFrontier)) &lt; bestLfromNBA)
+				&& //Line 4 of PNBA*?
+				((theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + otherRouteData.bestFfromNBA - otherRouteData.distance.at(cheapestNodeOnFrontier)) &lt; bestLfromNBA))
+				{
+					for(drivingDirection theMove = driveW; theMove &lt;= driveE; theMove = static_cast&lt;drivingDirection&gt;(theMove + 1))
+					{//Line 5 of PNBA*?
+						tempRoute = theRouteData.optimalRouteToNode.at(cheapestNodeOnFrontier);
+						nextHex = map.getNeighborHex(cheapestNodeOnFrontier, theMove); //y from PNBA*
+						if(theRouteData.mFromNBA.at(nextHex) && ((theRouteData.distance.at(nextHex) - 1 + theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + theRouteData.roughness.at(cheapestNodeOnFrontier)) &lt; bestLfromNBA))
+						{//Half of Line 6 from PNBA*?
+							nextMoveCost = getMoveCost(map,theRouteData.roughness,cheapestNodeOnFrontier,theMove);
+							if(theRouteData.calculatedRouteCost.at(nextHex) &gt; theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost)
+							{//Other half of Line 6 in PNBA*?
+								theRouteData.calculatedRouteCost.at(nextHex) = theRouteData.calculatedRouteCost.at(cheapestNodeOnFrontier) + nextMoveCost;//Line 7 of PNBA*
+								tempRoute.emplace_back(theMove);
+								theRouteData.optimalRouteToNode.at(nextHex) = tempRoute;
+								//Line 8 is based on Line 7 plus stored distance.
+								if(find(theRouteData.onFrontier.begin(),theRouteData.onFrontier.end(),nextHex) == theRouteData.onFrontier.end())
+								{
+									theRouteData.onFrontier.emplace_back(nextHex);//Lines 9, 10, 11? I don't understand why 9 and 10 exist.
+								}
+								if(theRouteData.calculatedRouteCost.at(nextHex) != INT_MAX && otherRouteData.calculatedRouteCost.at(nextHex) != INT_MAX)
+								{//Lines 12-16 of PNBA*
+									if((theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex)) &lt; bestLfromNBA)
+									{
+										bestLfromNBA = theRouteData.calculatedRouteCost.at(nextHex) + otherRouteData.calculatedRouteCost.at(nextHex);
+									}
+								}
+							}
+						}
+					}
+				}
+			theRouteData.mFromNBA.at(cheapestNodeOnFrontier) = false;//Remove the node from M from PNBA*. Line 17?
+		}
