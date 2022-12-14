@@ -46,16 +46,6 @@ body {
         flex-basis: 40em;
     }
 
-    #fancy-background {
-        position: absolute;
-        color: #000900;
-        font-size: 40pt;
-        z-index: -1;
-        user-select: none;
-        overflow: hidden;
-        height: 100%;
-        /* max-height: 1vh; */
-    }
 }
 
 #mypic {
@@ -90,6 +80,20 @@ hr {
     flex-grow: 1;
 }
 
+#fancy-background {
+    position: absolute;
+    color: #000900;
+    font-size: 30pt;
+    z-index: -1;
+    user-select: none;
+    overflow: hidden;
+    height: 95%;
+    width: 95%;
+    overflow-x: visible;
+    overflow-y: visible;
+    /* max-height: 1vh; */
+}
+
 @media all and (min-width: 800px) {
 
     .main-content {
@@ -99,17 +103,6 @@ hr {
         justify-content: space-between;
         flex-wrap: wrap-reverse;
         gap: 45px;
-    }
-
-    #fancy-background {
-        position: absolute;
-        color: #000900;
-        font-size: 40pt;
-        z-index: -1;
-        user-select: none;
-        overflow: hidden;
-        height: 100%;
-        /* max-height: 1vh; */
     }
 
     #left-main-content {
