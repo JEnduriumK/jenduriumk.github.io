@@ -140,6 +140,7 @@ video {
     border: solid green;
     border-radius: 0.9em;
     padding:0.2em;
+    display: inline-block;
 }
 
 
