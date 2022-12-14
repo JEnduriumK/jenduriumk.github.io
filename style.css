@@ -1,0 +1,187 @@
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    font-family:'Georgia',sans-serif;
+}
+
+#main-page {
+    /* Lets use flexbox - https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
+    display: flex;
+    /* Things in here are going to be in a column, one item above the next */
+    flex-direction: column;
+    /* Push things inside this section to the front (top) */
+    justify-content: flex-start;
+    /* Lets allow things to stretch across the page */
+    align-items: stretch;
+    align-self: center;
+    max-width: 90%;
+    min-width: 40%;
+    position: relative;
+}
+
+@media all and (max-width: 800px) {
+    .main-content {
+        display: flex;
+        flex-direction: column-reverse;
+        /* align-items: flex-start; */
+        /* justify-content: space-around; */
+        gap: 5px;
+    }
+
+    #left-main-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-shrink: 2;
+        /* flex-basis: 40em; */
+    }
+    
+    #right-main-content {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 1;
+        flex-basis: 40em;
+    }
+
+    #fancy-background {
+        position: absolute;
+        color: #000900;
+        font-size: 40pt;
+        z-index: -1;
+        user-select: none;
+        overflow: hidden;
+        height: 100%;
+        /* max-height: 1vh; */
+    }
+}
+
+#mypic {
+    float:right;
+    margin: 10px;
+    max-width: 25%
+}
+
+hr {
+    background-color: green;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+#left-side-title {
+    display: flex;
+    flex-grow: 7;
+}
+
+#right-side-subtitle{
+    flex-grow: 1;
+    /* text-align: end; */
+}
+
+#magic-button {
+    flex-grow: 1;
+}
+
+@media all and (min-width: 800px) {
+
+    .main-content {
+        display: flex;
+        flex-direction: row;
+        /* align-items: flex-start; */
+        justify-content: space-between;
+        flex-wrap: wrap-reverse;
+        gap: 45px;
+    }
+
+    #fancy-background {
+        position: absolute;
+        color: #000900;
+        font-size: 40pt;
+        z-index: -1;
+        user-select: none;
+        overflow: hidden;
+        height: 100%;
+        /* max-height: 1vh; */
+    }
+
+    #left-main-content {
+        display: flex;
+        flex-direction: column;
+        max-width: 80%;
+        min-width: 40%;
+        justify-content: center;
+        flex-shrink: 4;
+        flex-basis: 40em;
+    }
+
+    #right-main-content {
+        display: flex;
+        flex-direction: column;
+        max-width: 30%;
+        min-width: 20%;
+        flex-shrink: 2;
+        flex-basis: 40em;
+    }
+}
+
+.main-content.wrap-under {
+    flex-wrap: wrap;
+}
+
+video {
+    border: solid green;
+    border-radius: 0.5em;
+    /* min-width: 100px;
+    max-width: 400px; */
+}
+
+.document-link, .document {
+    border: solid green;
+    border-radius: 0.9em;
+    padding:0.2em;
+}
+
+
+
+a {
+    color: lightgreen;
+    text-decoration: none;
+}
+
+a:hover {
+    color: darkgreen;
+}
+
+a:visited {
+    color: red;
+}
+
+a:visited:hover {
+    color: darkred;
+}
+
+.image-needs-background {
+    background-color: white;
+    border: solid lightgreen;
+    border-radius: 0.3em;
+}
+
+#project-list{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+}
+
+.important {
+    flex-grow: 2;
+    font-size: x-large;
+}
