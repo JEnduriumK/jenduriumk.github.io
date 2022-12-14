@@ -82,13 +82,13 @@ hr {
 
 #fancy-background {
     position: absolute;
-    color: #000900;
+    color: #00ff0006;
     font-size: 30pt;
     z-index: -1;
     user-select: none;
     overflow: hidden;
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
     overflow-x: visible;
     overflow-y: visible;
     /* max-height: 1vh; */
