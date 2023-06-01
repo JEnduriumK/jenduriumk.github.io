@@ -5,6 +5,7 @@ body {
     background-color: black;
     color: white;
     font-family:'Georgia',sans-serif;
+    margin: 0px;
 }
 
 #main-page {
@@ -43,7 +44,8 @@ body {
         display: flex;
         flex-direction: column;
         flex-shrink: 1;
-        flex-basis: 40em;
+        /* flex-basis: 40em; */
+        margin-bottom: 30px;
     }
 
 }
@@ -69,10 +71,22 @@ hr {
 #left-side-title {
     display: flex;
     flex-grow: 7;
+    flex-direction: column;
+}
+
+#the-title {
+    margin-bottom:0px;
+}
+
+#title-quote {
+    margin-bottom: 15px;
+    margin-top: 0px;
+    color:aqua;
 }
 
 #right-side-subtitle{
     flex-grow: 1;
+    margin-top:10px;
     /* text-align: end; */
 }
 
@@ -171,8 +185,9 @@ a:visited:hover {
 #project-list{
     display: flex;
     flex-direction: column;
-    gap: 4rem;
-    align-items: center;
+    /* gap: 4rem; */
+    align-items: left;
+    padding-left:10%
 }
 
 .important {
